@@ -1,0 +1,37 @@
+{
+  "$id": "https://smartoak.com/group.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "A representation of a user",
+  "type": "object",
+  "required": [
+    "user_id",
+    "user_login",
+    "user_password"
+  ],
+  "definitions": {
+    "user_id": {
+      "$comment": "user id",
+      "type": "string",
+      "format": "guid"
+    },
+    "user_login": {
+      "$comment": "user login",
+      "type": "string"
+    },
+    "user_password": {
+      "$comment": "user password",
+      "type": "string"
+    }
+  },
+  "properties": {
+    "user_id": {
+      "$ref": "#/definitions/user_id"
+    },
+    "user_login": {
+      "$ref": "#/definitions/user_login"
+    },
+    "user_password": {
+      "$ref": "#/definitions/user_password"
+    }
+  }
+}
