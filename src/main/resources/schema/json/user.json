@@ -2,7 +2,9 @@
   "$id": "https://smartoak.com/group.schema.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "A representation of a user",
+  "title": "User",
   "type": "object",
+  "additionalProperties": false,
   "required": [
     "user_id",
     "user_login",
@@ -23,6 +25,7 @@
       "type": "string"
     }
   },
+  "additionalProperties": "false",
   "properties": {
     "user_id": {
       "$ref": "#/definitions/user_id"
@@ -32,6 +35,7 @@
     },
     "user_password": {
       "$ref": "#/definitions/user_password"
-    }
+    },
+    "entity": true
   }
 }
