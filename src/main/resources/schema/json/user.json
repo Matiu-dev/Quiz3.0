@@ -25,7 +25,6 @@
       "type": "string"
     }
   },
-  "additionalProperties": "false",
   "properties": {
     "user_id": {
       "$ref": "#/definitions/user_id"
@@ -35,7 +34,6 @@
     },
     "user_password": {
       "$ref": "#/definitions/user_password"
-    },
-    "entity": true
+    }
   }
 }

@@ -6,10 +6,9 @@ import org.springframework.http.HttpEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import pl.mateusz.quiz.domain.dto.User;
-import pl.mateusz.quiz.user.UserService;
+import pl.mateusz.quiz.quiz_user.UserService;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
@@ -18,7 +17,6 @@ public class UserController {
 
     @Autowired
     UserService userService;
-
 
     @RequestMapping(value = "/addUser", method = POST, consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     @ResponseBody
@@ -29,7 +27,6 @@ public class UserController {
         Gson gson = new Gson();
         User userGson = gson.fromJson(json, User.class);
         userService.addUser(userGson);
-
 
         return userGson;
     }

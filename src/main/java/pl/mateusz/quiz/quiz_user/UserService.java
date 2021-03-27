@@ -1,4 +1,4 @@
-package pl.mateusz.quiz.user;
+package pl.mateusz.quiz.quiz_user;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

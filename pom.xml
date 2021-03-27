@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>pl.mateusz</groupId>
 	<artifactId>quiz</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<name>quiz</name>
 	<description>Quiz Application</description>
 	<properties>
@@ -141,8 +141,9 @@
 						<configuration>
 							<sourceDirectory>${project.basedir}/src/main/resources/schema/json
 							</sourceDirectory>
-							<outputDirectory>src/main/java/pl/mateusz/quiz/domain/dto
+							<outputDirectory>${project.basedir}/src/main/java
 							</outputDirectory>
+							<targetPackage>pl.mateusz.quiz.domain.dto</targetPackage>
 							<customAnnotator>pl.mateusz.common.HibernateAnnotator
 							</customAnnotator>
 							<dateTimeType>java.lang.String</dateTimeType>
