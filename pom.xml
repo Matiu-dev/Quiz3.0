@@ -10,14 +10,75 @@
 	</parent>
 	<groupId>pl.mateusz</groupId>
 	<artifactId>quiz</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 	<name>quiz</name>
 	<description>Quiz Application</description>
 	<properties>
 		<java.version>11</java.version>
+		<aspectj.version>1.8.4</aspectj.version>
+		<start-class>pl.mateusz.quiz.QuizApplication</start-class>
+		<testcontainers.postgresql.version>1.10.6</testcontainers.postgresql.version>
+		<postgresql.version>42.2.5</postgresql.version>
+		<guava.version>21.0</guava.version>
 	</properties>
 
+
 	<dependencies>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-envers</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+		</dependency>
+
+		<!-- Test containers only dependencies -->
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>${testcontainers.postgresql.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>
+		<!-- Test containers only dependencies -->
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
+
+<!--		stare-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -45,18 +106,18 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-test</artifactId>-->
+<!--			<scope>test</scope>-->
 
-			<exclusions>
-				<exclusion>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+<!--			<exclusions>-->
+<!--				<exclusion>-->
+<!--					<groupId>org.junit.vintage</groupId>-->
+<!--					<artifactId>junit-vintage-engine</artifactId>-->
+<!--				</exclusion>-->
+<!--			</exclusions>-->
+<!--		</dependency>-->
 
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -143,7 +204,7 @@
 							</sourceDirectory>
 							<outputDirectory>${project.basedir}/src/main/java
 							</outputDirectory>
-							<targetPackage>pl.mateusz.quiz.domain.dto</targetPackage>
+							<targetPackage>pl.mateusz.quiz.projection.model</targetPackage>
 							<customAnnotator>pl.mateusz.common.HibernateAnnotator
 							</customAnnotator>
 							<dateTimeType>java.lang.String</dateTimeType>
@@ -152,6 +213,7 @@
 				</executions>
 			</plugin>
 		</plugins>
+
 	</build>
 
 </project>

@@ -6,34 +6,34 @@
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "user_id",
-    "user_login",
-    "user_password"
+    "id",
+    "login",
+    "password"
   ],
   "definitions": {
-    "user_id": {
+    "id": {
       "$comment": "user id",
       "type": "string",
       "format": "guid"
     },
-    "user_login": {
+    "login": {
       "$comment": "user login",
       "type": "string"
     },
-    "user_password": {
+    "password": {
       "$comment": "user password",
       "type": "string"
     }
   },
   "properties": {
-    "user_id": {
-      "$ref": "#/definitions/user_id"
+    "id": {
+      "$ref": "#/definitions/id"
     },
-    "user_login": {
-      "$ref": "#/definitions/user_login"
+    "login": {
+      "$ref": "#/definitions/login"
     },
-    "user_password": {
-      "$ref": "#/definitions/user_password"
+    "password": {
+      "$ref": "#/definitions/password"
     }
   }
 }
