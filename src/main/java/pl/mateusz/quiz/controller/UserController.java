@@ -1,14 +1,19 @@
 package pl.mateusz.quiz.controller;
 
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import pl.mateusz.quiz.projection.model.UserDto;
+import pl.mateusz.quiz.projection.model.User;
 import pl.mateusz.quiz.projection.repository.UserRepository;
-import pl.mateusz.quiz.projection.service.UserService2;
+import pl.mateusz.quiz.projection.service.UserService;
+
+import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @RestController
 @EnableWebMvc
@@ -18,25 +23,72 @@ public class UserController {
 //    UserService userService;
 
     @Autowired
-    private UserRepository userRepository2;
+    private UserService userService;
 
-    @Autowired
-    private UserService2 userService2;
-
-    @RequestMapping(value = "/getUser", method = GET, consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/getUsers",
+            method = GET,
+            consumes = APPLICATION_JSON_VALUE,
+            produces = APPLICATION_JSON_VALUE)
     @ResponseBody
-    public UserDto addUser() {//HttpEntity<String> httpEntity
+    public List<User> findUsers() {
+        return userService.findAllUsers();
+    }
 
-//        String json = httpEntity.getBody();
-//
-//        Gson gson = new Gson();
-//        User userGson = gson.fromJson(json, User.class);
-//        userService.addUser(userGson);
+    @RequestMapping(value = "/getUser/{login}",
+            method = GET,
+            consumes = APPLICATION_JSON_VALUE,
+            produces = APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public User getUser(@PathVariable("login") String login) {
+        return userService.getUserByLogin(login);
+    }
 
-//        UserView userView = userService2.getUser("1");
-//        return userView;
-        UserDto userDto = userService2.getUserByLogin("Jan");
+    @RequestMapping(value = "/addUser",
+            method = POST,
+            consumes = APPLICATION_JSON_VALUE,
+            produces = APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public HttpStatus addUser(HttpEntity<String> httpEntity) {
 
-        return userDto;
+//        User user = new User();
+//        user.setId("2");
+//        user.setLogin("Mat");
+//        user.setPassword("pass");
+//        userService.saveUser(user);
+
+        String json = httpEntity.getBody();
+        Gson gson = new Gson();
+        User userGson = gson.fromJson(json, User.class);
+        userService.saveUser(userGson);
+
+        return HttpStatus.OK;
+    }
+
+    @RequestMapping(value = "/deleteUser/{id}",
+            method = DELETE,
+            consumes = APPLICATION_JSON_VALUE,
+            produces = APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public HttpStatus deleteById(@PathVariable("id") String id) {
+
+        userService.deleteById(id);
+
+        return HttpStatus.OK;
+    }
+
+    @RequestMapping(value = "/updateUser",
+            method = PUT,
+            consumes = APPLICATION_JSON_VALUE,
+            produces = APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public HttpStatus updateUser(HttpEntity<String> httpEntity) {
+
+        String json = httpEntity.getBody();
+        Gson gson = new Gson();
+        User userGson = gson.fromJson(json, User.class);
+        userService.updateUser(userGson);
+
+
+        return HttpStatus.OK;
     }
 }
