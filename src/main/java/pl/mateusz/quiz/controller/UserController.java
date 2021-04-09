@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import pl.mateusz.quiz.projection.model.User;
-import pl.mateusz.quiz.projection.repository.UserRepository;
 import pl.mateusz.quiz.projection.service.UserService;
 
 import java.util.List;
@@ -18,9 +17,6 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 @RestController
 @EnableWebMvc
 public class UserController {
-
-//    @Autowired
-//    UserService userService;
 
     @Autowired
     private UserService userService;

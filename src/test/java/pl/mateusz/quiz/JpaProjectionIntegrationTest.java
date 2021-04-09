@@ -8,7 +8,6 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import pl.mateusz.quiz.projection.model.User;
 import pl.mateusz.quiz.projection.repository.UserRepository;
-import pl.mateusz.quiz.projection.view.UserView;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
@@ -24,8 +23,7 @@ public class JpaProjectionIntegrationTest {
 
     @Test
     void contextLoads() {
-        UserView userView = userRepository.getUserById("1").get(0);
-        assertThat(userView.getId()).isEqualTo("1");
+
 
         User userDto = userRepository.findByLogin("Jan");
         assertThat(userDto.getPassword()).isEqualTo("pass");
