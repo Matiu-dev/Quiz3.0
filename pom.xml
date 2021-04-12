@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>pl.mateusz</groupId>
 	<artifactId>quiz</artifactId>
-	<version>0.0.4</version>
+	<version>0.0.5</version>
 	<name>quiz</name>
 	<description>Quiz Application</description>
 	<properties>
