@@ -1,0 +1,26 @@
+{
+  "question": "Pytanie testowe",
+  "answers": [
+    {
+      "answer": "Odpowiedz A"
+    },
+    {
+      "answer": "Odpowiedz B"
+    },
+    {
+      "answer": "Odpowiedz C"
+    },
+    {
+      "answer": "Odpowiedz D"
+    }
+  ],
+  "trueanswers": [
+    {
+      "trueanswer": "Odpowiedz B"
+    },
+
+    {
+      "trueanswer": "Odpowiedz D"
+    }
+  ]
+}

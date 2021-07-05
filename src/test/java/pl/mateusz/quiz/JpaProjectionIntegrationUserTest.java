@@ -3,14 +3,14 @@ package pl.mateusz.quiz;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
-import pl.mateusz.quiz.controller.user.GetUser;
 import pl.mateusz.quiz.projection.model.User;
 import pl.mateusz.quiz.projection.repository.UserRepository;
-import pl.mateusz.quiz.projection.service.UserService;
+
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -26,7 +26,7 @@ import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TES
 @RunWith(SpringRunner.class)
 @Sql(scripts = "/projection-insert-data-user.sql")
 @Sql(scripts = "/projection-clean-up-data-user.sql", executionPhase = AFTER_TEST_METHOD)
-public class JpaProjectionIntegrationTest {
+public class JpaProjectionIntegrationUserTest {
 
     @Autowired
     private UserRepository userRepository;

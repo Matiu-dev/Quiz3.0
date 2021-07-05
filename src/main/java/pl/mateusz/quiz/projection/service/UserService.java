@@ -30,9 +30,10 @@ public class UserService {
     }
 
     public void updateUser(User userGson) {
-        User user = userRepository.findById(userGson.getId());
+        User user = userRepository.findById(userGson.getUserId());
         user.setLogin(userGson.getLogin());
         user.setPassword(userGson.getPassword());
+        user.setUserrole(userGson.getUserrole());
         saveUser(user);
     }
 

@@ -1,1 +1,85 @@
-{}
+{
+  "$id": "https://smartoak.com/group.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "A representation of a question",
+  "title": "Question",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "question_id",
+    "question",
+    "answers",
+    "trueanswers"
+  ],
+  "definitions": {
+    "question_id": {
+      "$comment": "question id",
+      "type": "string",
+      "format": "guid"
+    },
+    "question":{
+      "$comment": "question",
+      "type": "string"
+    },
+    "answers": {
+      "type": "array",
+      "additionalProperties": false,
+      "items": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "answer_id",
+          "answer"
+        ],
+        "properties": {
+          "answer_id": {
+            "$comment": "answer id",
+            "type": "string",
+            "format": "guid"
+          },
+          "answer": {
+            "$comment": "answer",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "trueanswers": {
+      "type": "array",
+      "additionalProperties": false,
+      "items": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "trueanswer_id",
+          "trueanswer"
+        ],
+        "properties": {
+          "trueanswer_id": {
+            "$comment": "true answer id",
+            "type": "string",
+            "format": "guid"
+          },
+          "trueanswer": {
+            "$comment": "answer",
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "properties": {
+    "question_id": {
+      "$ref": "#/definitions/question_id"
+    },
+    "question": {
+      "$ref": "#/definitions/question"
+    },
+    "answers": {
+      "$ref": "#/definitions/answers"
+    },
+    "trueanswers": {
+      "$ref": "#/definitions/trueanswers"
+    }
+  }
+}

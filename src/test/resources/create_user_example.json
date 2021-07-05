@@ -1,5 +1,5 @@
 {
-  "id": "4",
   "login": "add_user",
-  "password": "pass"
+  "password": "pass",
+  "userrole": "BASIC_USER"
 }

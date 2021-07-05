@@ -6,12 +6,13 @@
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "id",
+    "user_id",
     "login",
-    "password"
+    "password",
+    "userrole"
   ],
   "definitions": {
-    "id": {
+    "user_id": {
       "$comment": "user id",
       "type": "string",
       "format": "guid"
@@ -23,17 +24,24 @@
     "password": {
       "$comment": "user password",
       "type": "string"
+    },
+    "userrole": {
+      "type": "string",
+      "enum": ["BASIC_USER", "ADMIN"]
     }
   },
   "properties": {
-    "id": {
-      "$ref": "#/definitions/id"
+    "user_id": {
+      "$ref": "#/definitions/user_id"
     },
     "login": {
       "$ref": "#/definitions/login"
     },
     "password": {
       "$ref": "#/definitions/password"
+    },
+    "userrole":{
+      "$ref": "#/definitions/userrole"
     }
   }
 }
